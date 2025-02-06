@@ -77,9 +77,9 @@ async fn main(
             "/api/v1/members/find",
             get(controllers::members::get_match_by_name),
         )
-        .route("/api/v1/members/:uuid", get(controllers::members::find_one))
+        //.route("/api/v1/members/:uuid", get(controllers::members::find_one))
         .route("/api/v1/members", get(controllers::members::find_all))
-        .route("/api/v1/members/:uuid", patch(controllers::members::update))
+        //.route("/api/v1/members/:uuid", patch(controllers::members::update))
         .route(
             "/api/v1/members/:uuid",
             delete(controllers::members::delete),

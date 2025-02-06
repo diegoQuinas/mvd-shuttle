@@ -25,7 +25,7 @@ pub async fn find_all(State(state): State<AppState>) -> Result<Json<FindAllRespo
     }))
 }
 
-pub async fn find_one(
+/*pub async fn find_one(
     State(state): State<AppState>,
     Path(uuid): Path<Uuid>,
 ) -> Result<Json<FindOneResponse>, UserError> {
@@ -38,7 +38,7 @@ pub async fn find_one(
         })),
     }
 }
-
+*/
 #[derive(Deserialize)]
 pub struct QuerySearch {
     pub name: Option<String>,
@@ -115,7 +115,7 @@ impl Member {
         }
     }
 }
-pub async fn update(
+/*pub async fn update(
     State(state): State<AppState>,
     Path(uuid): Path<Uuid>,
     Json(update_member_body): Json<UpdateMemberBody>,
@@ -134,7 +134,7 @@ pub async fn update(
         data: updated_member,
     }))
 }
-
+*/
 pub async fn delete(
     State(state): State<AppState>,
     Path(uuid): Path<Uuid>,
@@ -288,7 +288,7 @@ impl Member {
         Ok(members)
     }
 
-    pub struct FullMemberDetail {
+    /*pub struct FullMemberDetail {
         id: Uuid,
         name: String,
         lastname: String,
@@ -308,7 +308,6 @@ impl Member {
     }
 
     pub async fn find_by_id(pool: &PgPool, id: Uuid) -> Option<Member> {
-        let mut result: FullMemberDetail;
         let query = sqlx::query_as(
             r#"
             SELECT id, name, lastname, ci, birth_date, phone, tutor_name, tutor_lastname, tutor_phone, observation, medical_society_id, address, created_at, updated_at
@@ -324,7 +323,7 @@ impl Member {
             Some(member) => Some(member),
             None => None,
         }
-    }
+    }*/
 
     pub async fn create(pool: &PgPool, member: Member) -> Result<Member, sqlx::Error> {
         let member = sqlx::query_as::<_, Member>(
